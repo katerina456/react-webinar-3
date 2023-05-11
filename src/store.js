@@ -5,6 +5,7 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
+    this.id = this.state.list.length;
   }
 
   /**
@@ -42,9 +43,11 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
+    this.id += 1;
+
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: this.state.list.length + 1, title: 'Новая запись'}]
+      list: [...this.state.list, {code: this.id, title: 'Новая запись'}]
     })
   };
 
@@ -68,7 +71,23 @@ class Store {
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
+          
+          if (item.clicked === undefined) {
+            item.clicked = 1;
+            item.title = item.title + ' | Выделяли 1 раз';
+          } else if (item.selected === false) {
+            item.clicked += 1;
+            
+            let flag = (item.clicked % 10 === 2 || item.clicked % 10 === 3 || item.clicked % 10 === 4 ) && (item.clicked < 5 ||  item.clicked > 20) ? true : false;
+
+            let index = item.title.indexOf('Выделяли') + 8;
+
+            item.title = `${item.title.slice(0, index)} ${item.clicked} ${flag? 'раза' : 'раз'}`;
+          }
+
           item.selected = !item.selected;
+        } else {
+          item.selected = false;
         }
         return item;
       })
