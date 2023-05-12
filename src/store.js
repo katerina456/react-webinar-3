@@ -74,15 +74,8 @@ class Store {
           
           if (item.clicked === undefined) {
             item.clicked = 1;
-            item.title = item.title + ' | Выделяли 1 раз';
           } else if (item.selected === false) {
             item.clicked += 1;
-            
-            let flag = (item.clicked % 10 === 2 || item.clicked % 10 === 3 || item.clicked % 10 === 4 ) && (item.clicked < 5 ||  item.clicked > 20) ? true : false;
-
-            let index = item.title.indexOf('Выделяли') + 8;
-
-            item.title = `${item.title.slice(0, index)} ${item.clicked} ${flag? 'раза' : 'раз'}`;
           }
 
           item.selected = !item.selected;
