@@ -2,20 +2,25 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './style.css';
 
-function Controls({onAdd}){
+function Controls({onOpen, count, summa}){
   return (
     <div className='Controls'>
-      <button onClick={() => onAdd()}>Добавить</button>
+      <p className="Controls-info">В корзине: 
+        <span className="Controls-span">
+          {count !== 0? ` ${count} / ${summa}  ₽` : ' пусто'}
+        </span>
+      </p>
+      <button onClick={() => onOpen()}>Перейти</button>
     </div>
   )
 }
 
 Controls.propTypes = {
-  onAdd: PropTypes.func
+  onOpen: PropTypes.func
 };
 
 Controls.defaultProps = {
-  onAdd: () => {}
+  onOpen: () => {}
 }
 
 export default React.memo(Controls);
