@@ -96,14 +96,10 @@ class Store {
       elem[index].count += 1;
       this.setBasket(elem);
     }
-    
-    console.log('s',this.basket)
   };
 
   removeBasketItem(code) {
-    
     this.setBasket( this.basket.filter(item => item.code !== code))
-    console.log('new',this.basket)
   }
 
   /**

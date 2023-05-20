@@ -14,8 +14,6 @@ import Layout from './components/layout';
 function App({store}) {
 
   const list = store.getState().list;
-
-  console.log(store)
   
   let count = 0;
   let summa = 0;
