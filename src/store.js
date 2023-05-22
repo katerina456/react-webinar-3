@@ -90,7 +90,7 @@ class Store {
       let id = this.state.list.findIndex(e => e.code === code);
       let element = this.state.list[id];
       element.count = 1;
-      this.setBasket([...this.basket, this.getState().list[id]]);
+      this.setBasket([...this.basket, element]);
     } else {
       let elem = this.basket;
       elem[index].count += 1;
