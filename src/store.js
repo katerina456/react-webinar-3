@@ -10,6 +10,8 @@ class Store {
     this.listeners = []; // Слушатели изменений состояния
     this.basket = []; 
     this.showBasket = false;
+    this.summa = 0;
+    this.count = 0;
   }
 
   /**
@@ -57,6 +59,16 @@ class Store {
     for (const listener of this.listeners) listener();
   }
 
+  setSumma(newState) {
+    this.summa = newState;
+    for (const listener of this.listeners) listener();
+  }
+
+  setCount(newState) {
+    this.count = newState;
+    for (const listener of this.listeners) listener();
+  }
+
   /**
    * Добавление новой записи
    */
@@ -96,10 +108,24 @@ class Store {
       elem[index].count += 1;
       this.setBasket(elem);
     }
+
+    let summa = 0;
+    this.basket.forEach(element => {
+      summa += element.count * element.price;
+    });
+    this.setSumma(summa);
+    this.setCount(this.basket.length);
   };
 
   removeBasketItem(code) {
     this.setBasket( this.basket.filter(item => item.code !== code))
+
+    let summa = 0;
+    this.basket.forEach(element => {
+      summa += element.count * element.price;
+    });
+    this.setSumma(summa);
+    this.setCount(this.basket.length);
   }
 
   /**

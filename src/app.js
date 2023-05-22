@@ -14,15 +14,14 @@ import Layout from './components/layout';
 function App({store}) {
 
   const list = store.getState().list;
-  
-  /* let count = 0; */
-  let summa = 0;
+  let basket = store.basket;
 
-  let basket = store.basket
+
+  /* let summa = 0;
+
   basket.forEach(element => {
-    /* count += element.count; */
-    summa += element.count * element.price
-  });
+    summa += element.count * element.price;
+  }); */
 
   const callbacks = {
     onAddBasketItem: useCallback((code) => {
@@ -50,13 +49,13 @@ function App({store}) {
   return (
     <PageLayout>
       <Head title='Магазин'/>
-      <Controls onOpen={callbacks.onOpen} count={basket.length} summa={summa} />
+      <Controls onOpen={callbacks.onOpen} count={store.count} summa={store.summa} />
       <List list={list}
             onAddBasketItem={callbacks.onAddBasketItem}
             /* onSelectItem={callbacks.onSelectItem} *//>
 
       {store.showBasket &&<Layout>
-         <Basket basketList={basket} summa={summa} 
+         <Basket basketList={basket} summa={store.summa} 
             onRemoveBasketItem={callbacks.onRemoveBasketItem} onClose={callbacks.onClose} />
       </Layout>}
       
