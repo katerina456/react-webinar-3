@@ -30,8 +30,8 @@ function Item(props){
       <div className='Item-title'>
         {props.item.title} {/* {count ? ` | Выделяли ${count} ${plural(count, {one: 'раз', few: 'раза', many: 'раз'})}` : ''} */}
         <div className="Item-price">
-          {props.item.price} ₽
-          {props.flag && <div className="Item-amount">{props.item.count} шт</div>}
+          {props.item.price.toLocaleString()} ₽
+          {props.flag && <div className="Item-amount">{props.item.count.toLocaleString()} шт</div>}
         </div>
       </div>
       <div className='Item-actions'>

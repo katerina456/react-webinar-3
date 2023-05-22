@@ -15,12 +15,12 @@ function App({store}) {
 
   const list = store.getState().list;
   
-  let count = 0;
+  /* let count = 0; */
   let summa = 0;
 
   let basket = store.basket
   basket.forEach(element => {
-    count += element.count;
+    /* count += element.count; */
     summa += element.count * element.price
   });
 
@@ -50,7 +50,7 @@ function App({store}) {
   return (
     <PageLayout>
       <Head title='Магазин'/>
-      <Controls onOpen={callbacks.onOpen} count={count} summa={summa} />
+      <Controls onOpen={callbacks.onOpen} count={basket.length} summa={summa} />
       <List list={list}
             onAddBasketItem={callbacks.onAddBasketItem}
             /* onSelectItem={callbacks.onSelectItem} *//>

@@ -2,6 +2,7 @@
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    overflow: hidden;
     padding-bottom: 90px;
     width: 960px;
     margin: auto;
