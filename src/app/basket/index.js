@@ -5,6 +5,8 @@ import ModalLayout from "../../components/modal-layout";
 import BasketTotal from "../../components/basket-total";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Card from '../card';
 
 function Basket() {
 
@@ -31,6 +33,12 @@ function Basket() {
 
   return (
     <ModalLayout title='Корзина' onClose={callbacks.closeModal}>
+      {/* <BrowserRouter>
+      <Routes>
+        <Route exact path={"/card"} element={ <Card /> } />
+      </Routes>
+        
+      </BrowserRouter> */}
       <List list={select.list} renderItem={renders.itemBasket}/>
       <BasketTotal sum={select.sum}/>
     </ModalLayout>
