@@ -8,7 +8,6 @@ import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
 import Pages from '../../components/pages';
 
-
 function Main() {
 
   const store = useStore();
@@ -44,8 +43,7 @@ function Main() {
     }, [callbacks.addToBasket]),
   };
 
-  return (
-    
+  return (  
     <PageLayout>
       <Head title='Магазин'/>
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}

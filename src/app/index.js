@@ -21,14 +21,11 @@ function App() {
 
         <Route exact path="/" element={<Main/>} />
 
-        <Route exact path={"/card"} element={ <Card /> } />
-        
-       {/*  <Route exact path={`/${activeModal}`} element={ <Basket/> } /> */}
-
-        
+        <Route exact path={"/card/:id" } element={ <Card /> } />
+       
       </Routes>
+    </BrowserRouter>
 
-      </BrowserRouter>
       {/* <Main/> */}
       {activeModal === 'basket' && <Basket/>}
     </>

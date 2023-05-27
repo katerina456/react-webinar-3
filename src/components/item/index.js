@@ -3,15 +3,20 @@ import PropTypes from "prop-types";
 import {cn as bem} from '@bem-react/classname';
 import {numberFormat} from "../../utils";
 import './style.css';
-import { Link } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 function Item(props){
+  let navigate = useNavigate();
 
   const cn = bem('Item');
 
   const callbacks = {
     onAdd: (e) => props.onAdd(props.item._id),
-    onOpen: (e) => props.onOpen(props.item._id)
+    onOpen: (e) => {
+      navigate( `/card/${props.item._id}` )
+      props.onOpen(props.item._id)
+    }
   }
 
   return (
@@ -19,9 +24,7 @@ function Item(props){
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
       
       <div onClick={callbacks.onOpen} className={cn('title')}>
-        <Link to="/card">
-          {props.item.title}
-        </Link>  
+        {props.item.title}
       </div>
       
       <div className={cn('actions')}>
