@@ -8,6 +8,7 @@ import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
 import Pages from '../../components/pages';
 import CardInfo from '../../components/card-info';
+import { useParams } from "react-router-dom"
 
 function Card() {
 
@@ -55,7 +56,7 @@ function Card() {
       <Head title={select.flag? select.product.title : ''}/>
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
                   sum={select.sum}/>
-      <CardInfo product={select.product} flag={select.flag} />
+      <CardInfo product={select.product} flag={select.flag} onAdd={callbacks.addToBasket} />
       
       {/* <List list={select.list} renderItem={renders.item}/>
       <Pages handleClick={(count) => setIndex(count)} limit={select.limit} /> */}

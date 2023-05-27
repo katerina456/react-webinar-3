@@ -2,7 +2,11 @@ import {memo, useCallback, useEffect, useState} from 'react';
 import './style.css';
 
 
-function CardInfo({ product, flag}) {
+function CardInfo({ product, flag, onAdd}) {
+
+  const callbacks = {
+    onAddItem: (e) => onAdd(product._id),
+  }
 
   return (
     <div className='Card-info'>
@@ -21,7 +25,7 @@ function CardInfo({ product, flag}) {
       <p className='card-info-text card-info-price'>
         Цена: {flag && product.price} ₽
       </p>
-      <button className='card-indo-button'>Добавить</button>
+      <button className='card-indo-button' onClick={callbacks.onAddItem}>Добавить</button>
     </div>
   );
 }
