@@ -10,14 +10,15 @@ function Item(props){
   const cn = bem('Item');
 
   const callbacks = {
-    onAdd: (e) => props.onAdd(props.item._id)
+    onAdd: (e) => props.onAdd(props.item._id),
+    onOpen: (e) => props.onOpen(props.item._id)
   }
 
   return (
     <div className={cn()}>
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
       
-      <div className={cn('title')}>
+      <div onClick={callbacks.onOpen} className={cn('title')}>
         <Link to="/card">
           {props.item.title}
         </Link>  

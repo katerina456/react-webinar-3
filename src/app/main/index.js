@@ -31,6 +31,7 @@ function Main() {
   }));
 
   const callbacks = {
+    openCard: useCallback(_id => store.actions.catalog.openPage(_id),[store]),
     // Добавление в корзину
     addToBasket: useCallback(_id => store.actions.basket.addToBasket(_id), [store]),
     // Открытие модалки корзины
@@ -39,7 +40,7 @@ function Main() {
 
   const renders = {
     item: useCallback((item) => {
-      return <Item item={item} onAdd={callbacks.addToBasket}/>
+      return <Item item={item} onOpen={callbacks.openCard} onAdd={callbacks.addToBasket}/>
     }, [callbacks.addToBasket]),
   };
 

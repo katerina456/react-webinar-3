@@ -2,25 +2,24 @@ import {memo, useCallback, useEffect, useState} from 'react';
 import './style.css';
 
 
-function CardInfo() {
-
+function CardInfo({ product, flag}) {
 
   return (
     <div className='Card-info'>
       <p className='card-info-text'>
-        Описание товара из множества букв. Описание товара из букв. В АПИ может быть меньше букв. Описание товара из множества букв.
+        {flag && product.description}
       </p>
       <p className='card-info-text'>
-        Страна производитель: <span className='card-info-bold'>Россия (RU)</span>
+        Страна производитель: <span className='card-info-bold'>{flag && product.madeIn._type}</span>
       </p>
       <p className='card-info-text'>
-        Категория: <span className='card-info-bold'>Электронника123a</span>
+        Категория: <span className='card-info-bold'>{flag && product.category._type}</span>
       </p>
       <p className='card-info-text'>
-        Год выпуска: <span className='card-info-bold'>2015</span>
+        Год выпуска: <span className='card-info-bold'>{flag && product.edition}</span>
       </p>
       <p className='card-info-text card-info-price'>
-        Цена: 12,57 ₽
+        Цена: {flag && product.price} ₽
       </p>
       <button className='card-indo-button'>Добавить</button>
     </div>

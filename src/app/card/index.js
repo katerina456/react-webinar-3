@@ -13,22 +13,28 @@ function Card() {
 
   const store = useStore();
 
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState()
 
-  useEffect(() => {
-    store.actions.catalog.load(index);
-  }, [index]);
+/*   useEffect(() => {
+    
+    store.actions.catalog.openPage("646b6e1fe1626c0bd8518053")
+
+  }, []); */
+
+  
 
   /* useEffect(() => {
     store.actions.catalog.findLimit();
   }, []); */
 
   const select = useSelector(state => ({
-    list: state.catalog.list,
-    limit: state.catalog.limit,
+    product: state.catalog.product,
+    flag: state.catalog.flag,
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
+
+  console.log('a',select.product)
 
   const callbacks = {
     // Добавление в корзину
@@ -46,10 +52,10 @@ function Card() {
   return (
     
     <PageLayout>
-      <Head title='Название товара'/>
+      <Head title={select.flag? select.product.title : ''}/>
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
                   sum={select.sum}/>
-      <CardInfo />
+      <CardInfo product={select.product} flag={select.flag} />
       
       {/* <List list={select.list} renderItem={renders.item}/>
       <Pages handleClick={(count) => setIndex(count)} limit={select.limit} /> */}
