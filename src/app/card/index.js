@@ -8,6 +8,11 @@ import CardInfo from '../../components/card-info';
 import { useParams } from "react-router-dom"
 
 function Card() {
+  const { id } = useParams()
+
+  useEffect(() => {
+    store.actions.catalog.openPage(id);
+  }, []);
 
   const store = useStore();
 
@@ -17,8 +22,6 @@ function Card() {
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-
-  console.log('a',select.product)
 
   const callbacks = {
     // Добавление в корзину
