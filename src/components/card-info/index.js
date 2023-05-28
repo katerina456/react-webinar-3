@@ -1,6 +1,5 @@
-import {memo, useCallback, useEffect, useState} from 'react';
+import {memo} from 'react';
 import './style.css';
-
 
 function CardInfo({ product, flag, onAdd}) {
 

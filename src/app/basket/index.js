@@ -5,8 +5,6 @@ import ModalLayout from "../../components/modal-layout";
 import BasketTotal from "../../components/basket-total";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Card from '../card';
 
 function Basket() {
 
@@ -19,6 +17,10 @@ function Basket() {
   }));
 
   const callbacks = {
+    openCard: useCallback(_id => {
+      store.actions.modals.close()
+      store.actions.catalog.openPage(_id),[store]
+    }),
     // Удаление из корзины
     removeFromBasket: useCallback(_id => store.actions.basket.removeFromBasket(_id), [store]),
     // Закрытие любой модалки
@@ -27,18 +29,12 @@ function Basket() {
 
   const renders = {
     itemBasket: useCallback((item) => {
-      return <ItemBasket item={item} onRemove={callbacks.removeFromBasket}/>
+      return <ItemBasket item={item} onOpen={callbacks.openCard} onRemove={callbacks.removeFromBasket}/>
     }, [callbacks.removeFromBasket]),
   };
 
   return (
     <ModalLayout title='Корзина' onClose={callbacks.closeModal}>
-      {/* <BrowserRouter>
-      <Routes>
-        <Route exact path={"/card"} element={ <Card /> } />
-      </Routes>
-        
-      </BrowserRouter> */}
       <List list={select.list} renderItem={renders.itemBasket}/>
       <BasketTotal sum={select.sum}/>
     </ModalLayout>

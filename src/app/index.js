@@ -16,18 +16,19 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
-      <Routes>
+      <BrowserRouter>
+        <Routes>
 
-        <Route exact path="/" element={<Main/>} />
+          <Route exact path="/" element={<Main/>} />
 
-        <Route exact path={"/card/:id" } element={ <Card /> } />
+          <Route exact path={"/card/:id" } element={ <Card /> } />
        
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+    
 
-      {/* <Main/> */}
-      {activeModal === 'basket' && <Basket/>}
+        {/* <Main/> */}
+        {activeModal === 'basket' && <Basket/>}
+      </BrowserRouter>
     </>
   );
 }
