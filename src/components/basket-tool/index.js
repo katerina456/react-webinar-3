@@ -1,15 +1,15 @@
-import {memo} from "react";
+import {Children, memo} from "react";
 import PropTypes from 'prop-types';
 import {cn as bem} from '@bem-react/classname';
 import {numberFormat, plural} from "../../utils";
 import './style.css';
 import Navigate from "../navigate";
 
-function BasketTool({sum, amount, onOpen}) {
+function BasketTool({sum, amount, onOpen, children}) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
-      <Navigate />
+      {children}
       <div>
         <span className={cn('label')}>В корзине:</span>
         <span className={cn('total')}>
