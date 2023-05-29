@@ -6,14 +6,14 @@ class Catalog extends StoreModule {
   constructor(store, name) {
     super(store, name);
     this.generateCode = codeGenerator(0);
-    this.limit = 0;
-    this.product = [];
-    this.flag = false
   }
 
   initState() {
     return {
-      list: []
+      list: [],
+      limit: 0,
+      product: [],
+      flag: false
     }
   }
 
